@@ -8,14 +8,14 @@
 
 ## 测试报告
 测试报告如下图：
-
+ ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/index.png)
 主要包含如下内容：
-
 ### 过滤操作
-
+ ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/guolv.png)
 ### 测试统计
-
+ ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/tongji.png)
 ### 测试结果
+ ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/yongli.png)
 每个具体执行的测试都包含以下基本信息：
 1.所属模块
 2.用例名称
