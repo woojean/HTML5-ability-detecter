@@ -1,5 +1,5 @@
 ﻿# HTML5 ability detecter
-这是一个参考<a href="http://html5test.com/">html5test</a> 并基于Qunit2.0实现的HTML5接口测试用例库，用于方便地对浏览器、webview控件等进行HTML5接口测试。
+这是一个参考<a href="http://html5test.com/">html5test</a> 并基于<a href="http://qunitjs.com/">Qunit2.0</a>实现的HTML5接口测试用例库，用于方便地对浏览器、webview控件等进行HTML5接口测试。
 因为是基于Qunit开发，所以可以很容易地新增自定义的测试用例。
 
 ## 使用
