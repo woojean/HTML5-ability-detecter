@@ -9,20 +9,21 @@
 ## 测试报告
 测试报告如下图：
  ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/index.png)
-主要包含如下内容：
-### 过滤操作
+
+### 主要包含如下内容：
+#### 过滤操作
  ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/guolv.png)
-### 测试统计
+#### 测试统计
  ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/tongji.png)
-### 测试结果
+#### 测试结果
  ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/yongli.png)
-每个具体执行的测试都包含以下基本信息：
+##### 每个具体执行的测试都包含以下基本信息：
 1.所属模块
 2.用例名称
 3.断言数及断言依据
 4.测试耗时
 
-并可执行以下操作：
+##### 并可执行以下操作：
 1.点击测试用例名称，展开具体的验证过程
 2.可以点击“重新测试”按钮，重新测试单个测试用例
 
