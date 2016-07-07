@@ -2307,18 +2307,18 @@ if ( urlParams.seed === true ) {
 QUnit.config.urlConfig.push(
 	{
 		id: "hidepassed",
-		label: "Hide passed tests",
-		tooltip: "Only show tests and assertions that fail. Stored as query-strings."
+		label: "只显示未通过的测试",
+		tooltip: "隐藏已通过的测试"
 	},
 	{
 		id: "noglobals",
-		label: "Check for Globals",
+		label: "检查是否输出了全局变量",
 		tooltip: "Enabling this will test if any test introduces new properties on the " +
 			"global object (`window` in Browsers). Stored as query-strings."
 	},
 	{
 		id: "notrycatch",
-		label: "No try-catch",
+		label: "不使用异常捕获",
 		tooltip: "Enabling this will run tests outside of a try-catch block. Makes debugging " +
 			"exceptions in IE reasonable. Stored as query-strings."
 	}
@@ -2387,8 +2387,7 @@ var config = QUnit.config,
 	document = window.document,
 	collapseNext = false,
 	hasOwn = Object.prototype.hasOwnProperty,
-	unfilteredUrl = setUrl( { filter: undefined, module: undefined,
-		moduleId: undefined, testId: undefined } ),
+	unfilteredUrl = "https://github.com/woojean/HTML5-ability-detecter",
 	defined = {
 		sessionStorage: ( function() {
 			var x = "qunit-test-string";
@@ -2650,14 +2649,14 @@ function toolbarLooseFilter() {
 
 	addClass( filter, "qunit-filter" );
 
-	label.innerHTML = "Filter: ";
+	label.innerHTML = "";
 
 	input.type = "text";
 	input.value = config.filter || "";
 	input.name = "filter";
 	input.id = "qunit-filter-input";
 
-	button.innerHTML = "Go";
+	button.innerHTML = "搜索";
 
 	label.appendChild( input );
 
@@ -2703,17 +2702,17 @@ function toolbarModuleFilter () {
 	addEvent( moduleSearch, "click", searchFocus );
 
 	label.id = "qunit-modulefilter-search-container";
-	label.innerHTML = "Module: ";
+	label.innerHTML = "";
 	label.appendChild( moduleSearch );
 
 	actions.id = "qunit-modulefilter-actions";
 	actions.innerHTML =
-		"<button style='display:none'>Apply</button>" +
-		"<button type='reset' style='display:none'>Reset</button>" +
+		"<button style='display:none'>确定</button>" +
+		"<button type='reset' style='display:none'>重置</button>" +
 		"<label class='clickable" +
 		( config.moduleId.length ? "" : " checked" ) +
 		"'><input type='checkbox'" + ( config.moduleId.length ? "" : " checked='checked'" ) +
-		">All modules</label>";
+		">所有模块:</label>";
 	allCheckbox = actions.lastChild.firstChild;
 	commit = actions.firstChild;
 	reset = commit.nextSibling;
@@ -2869,21 +2868,21 @@ function appendFilteredTest() {
 	if ( !testId || testId.length <= 0 ) {
 		return "";
 	}
-	return "<div id='qunit-filteredTest'>Rerunning selected tests: " +
+	return "<div id='qunit-filteredTest'>重新执行选中的测试: " +
 		escapeText( testId.join( ", " ) ) +
 		" <a id='qunit-clearFilter' href='" +
 		escapeText( unfilteredUrl ) +
-		"'>Run all tests</a></div>";
+		"'>重新执行所有测试</a></div>";
 }
 
 function appendUserAgent() {
 	var userAgent = id( "qunit-userAgent" );
 
 	if ( userAgent ) {
-		userAgent.innerHTML = "";
+		userAgent.innerHTML = "测试所用浏览器：";
 		userAgent.appendChild(
 			document.createTextNode(
-				"QUnit " + QUnit.version + "; " + navigator.userAgent
+				navigator.userAgent
 			)
 		);
 	}
@@ -2935,7 +2934,7 @@ function appendTest( name, testId, moduleName ) {
 	title.innerHTML = getNameHtml( name, moduleName );
 
 	rerunTrigger = document.createElement( "a" );
-	rerunTrigger.innerHTML = "Rerun";
+	rerunTrigger.innerHTML = "重新测试";
 	rerunTrigger.href = setUrl( { testId: testId } );
 
 	testBlock = document.createElement( "li" );
@@ -2979,18 +2978,11 @@ QUnit.done( function( details ) {
 	var i, key,
 		banner = id( "qunit-banner" ),
 		tests = id( "qunit-tests" ),
-		html = [
-			"Tests completed in ",
-			details.runtime,
-			" milliseconds.<br />",
-			"<span class='passed'>",
-			details.passed,
-			"</span> assertions of <span class='total'>",
-			details.total,
-			"</span> passed, <span class='failed'>",
-			details.failed,
-			"</span> failed."
-		].join( "" );
+		html = "共进行<span class='total'>"
+		+details.total+"</span>个测试，通过<span class='passed'>"
+		+details.passed+"</span>个，失败<span class='failed'>"
+		+details.failed+"个</span>，测试耗时：<span class='usetime'>"
+		+details.runtime+"</span>毫秒";
 
 	if ( banner ) {
 		banner.className = details.failed ? "qunit-fail" : "qunit-pass";

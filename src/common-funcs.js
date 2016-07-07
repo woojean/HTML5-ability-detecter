@@ -1,3 +1,5 @@
+
+
 function isBlock(element) {
 	return getStyle(element, 'display') == 'block';
 };
@@ -88,7 +90,6 @@ var getRenderedStyle = (function(){
 			return null;
 		}
 	}
-		
 	return getRenderedStyle;
 })();
 
@@ -96,3 +97,54 @@ var getRenderedStyle = (function(){
 function removeInput(e) {
 	document.body.removeChild(e.wrapper);
 };
+
+
+var isEventSupported = (function(){
+	var TAGNAMES = {
+		'select':'input','change':'input','input':'input','submit':'form','reset':'form','forminput':'form','formchange':'form','error':'img','load':'img','abort':'img'
+	}
+		
+	function isEventSupported(eventName, element) {
+		element = element || document.createElement(TAGNAMES[eventName] || 'div');
+		eventName = 'on' + eventName;
+			
+		var isSupported = (eventName in element);
+			
+		if (!isSupported) {
+			if (!element.setAttribute) {
+				element = document.createElement('div');
+			}
+			if (element.setAttribute && element.removeAttribute) {
+				element.setAttribute(eventName, '');
+				isSupported = typeof element[eventName] == 'function';
+				
+				if (typeof element[eventName] != 'undefined') {
+					element[eventName] = void 0;
+				}
+				element.removeAttribute(eventName);
+			}
+		}
+				
+		element = null;
+		return isSupported;
+	}
+
+	return isEventSupported;
+})();
+
+
+
+
+
+function canPlayType(t) {
+	/*
+	There is a bug in iOS 4.1 or earlier where probably and maybe are switched around.
+	This bug was reported and fixed in iOS 4.2 
+	*/
+				
+	if (Browsers.isOs('iOS', '<', '4.2'))
+		return this.element.canPlayType(t) == 'probably' || this.element.canPlayType(t) == 'maybe';
+	else 
+		return this.element.canPlayType(t) == 'probably';
+}
+
