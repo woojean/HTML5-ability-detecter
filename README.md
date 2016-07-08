@@ -19,12 +19,17 @@
  ![image](https://github.com/woojean/HTML5-ability-detecter/blob/master/imgs/yongli.png)
 ##### 每个具体执行的测试都包含以下基本信息：
 1.所属模块 
+
 2.用例名称 
+
 3.断言数及断言依据 
+
 4.测试耗时 
+
 
 ##### 并可执行以下操作：
 1.点击测试用例名称，展开具体的验证过程 
+
 2.可以点击“重新测试”按钮，重新测试单个测试用例 
 
 
